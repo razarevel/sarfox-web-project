@@ -46,7 +46,7 @@ export const PlatformSelector = ({ onSelectPlatform }: Props) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdownDefaultButton"
         >
-          {data.map((plateform) => plateform.slug==='playstation'?null: (
+          {data?.results.map((plateform) => (
             <li key={plateform.id}>
               <a
                 onClick={() => {

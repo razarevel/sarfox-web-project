@@ -11,7 +11,7 @@ export default function GenreList({selectedGenre, onSelectGenre }: Props) {
   return (
     <>
       <div className="flex flex-col space-y-4">
-        {data.map((item) => (
+        {data?.results.map((item) => (
           <div
             key={item.id}
             className="lg:mx-4 md:mx-2 group flex items-center space-x-2"
