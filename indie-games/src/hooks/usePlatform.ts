@@ -1,12 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { FetchRespone} from '../services/api-cilent'
 import apiCilent from "../services/api-cilent";
+import { Platform } from "./useGames";
 
-interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 const usePlatform = () =>
   useQuery({
     queryKey: ["platforms"],
