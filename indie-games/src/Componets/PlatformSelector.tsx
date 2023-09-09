@@ -1,11 +1,8 @@
 import { useState } from "react";
 import usePlatform from "../hooks/usePlatform";
-import { Platform } from "../hooks/useGames";
-interface Props {
-  onSelectPlatform: (platform: Platform) => void;
-}
-
-export const PlatformSelector = ({ onSelectPlatform }: Props) => {
+import useGameQueryStore from "../store";
+export const PlatformSelector = () => {
+  const setplatformId = useGameQueryStore((s) => s.setPlatformId);
   const { data, error } = usePlatform();
   const [showList, setShowList] = useState(false);
   const [showListName, setShowListName] = useState("Platforms");
@@ -50,7 +47,7 @@ export const PlatformSelector = ({ onSelectPlatform }: Props) => {
             <li key={plateform.id}>
               <a
                 onClick={() => {
-                  onSelectPlatform(plateform);
+                  setplatformId(plateform.id);
                   setShowList(!showList);
                   setShowListName(plateform.name);
                 }}

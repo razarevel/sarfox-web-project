@@ -2,10 +2,10 @@ import Image1 from "../assets/RevelDark.png";
 import Image2 from "../assets/revelWhite.png";
 import SearchInput from "./SearchInput";
 import Darkmode from "./darkmode";
-export interface Props {
-  onSearch: (searchText: string) => void;
-}
-export default function Navbar({ onSearch }: Props) {
+
+
+
+export default function Navbar() {
   return (
     <>
       <div className="flex items-center justify-end md:hidden mr-4 my-4">
@@ -41,7 +41,7 @@ export default function Navbar({ onSearch }: Props) {
           />
         </div>
         <div className="grow px-4">
-          <SearchInput onSearch={onSearch} />
+          <SearchInput />
         </div>
         <div className="flex-none hidden sm:block">
           <Darkmode />

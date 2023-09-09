@@ -1,15 +1,13 @@
 import { useState } from "react";
-interface Props{
-    onSelectSortOrder: (sortOrder:string)=>void;
-    SortOrder:string;
-}
-export const SortSelector = ({onSelectSortOrder,SortOrder}:Props) => {
+import useGameQueryStore from "../store";
+
+export const SortSelector = () => {
   const [showList, setShowList] = useState(false);
   const hidden =
     "z-10 hidden bg-slate-300 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 w-42 md:w-72";
   const show =
     "z-10  bg-white divide-y bg-slate-300 divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute mt-3 w-42 md:w-72 ";
-  const sortOrder = [
+  const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Data added" },
     { value: "name", label: "Name" },
@@ -17,7 +15,9 @@ export const SortSelector = ({onSelectSortOrder,SortOrder}:Props) => {
     { value: "-metacritic", label: "Popularity" },
     { value: "-rating", label: "Average rating" },
   ];
-  const currentOrder = sortOrder.find(order=> order.value===SortOrder);
+  const setSortOrder = useGameQueryStore(s=>s.setSortOrder);
+  const sortOrder = useGameQueryStore(s=>s.gameQuery.sortOrder);
+  const currentOrder = sortOrders.find(order=> order.value===sortOrder);
   return (
     <div>
       <button
@@ -50,12 +50,12 @@ export const SortSelector = ({onSelectSortOrder,SortOrder}:Props) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdownDefaultButton"
         >
-          {sortOrder.map((item) => (
+          {sortOrders.map((item) => (
             <li key={item.value}>
               <a
                 onClick={() => {
                   setShowList(!showList);
-                  onSelectSortOrder(item.value);
+                  setSortOrder(item.value);
                 }}
                 href="#"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"

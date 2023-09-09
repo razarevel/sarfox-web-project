@@ -1,13 +1,13 @@
-import useGenre, { Genre } from "../hooks/useGenre";
+import useGenre from "../hooks/useGenre";
 import getCroppImageUrl from "../services/image-url";
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
-}
-export default function GenreList({selectedGenre, onSelectGenre }: Props) {
+import useGameQueryStore from "../store";
+export default function GenreList() {
   const { data } = useGenre();
-  const  style = "text-xl font-thin opacity-80 group-hover:opacity-100 hover:border-b-2 cursor-pointer"
-  const selectedStyle = "text-xl font-semibold hover:border-b-2 cursor-pointer"
+  const  selectedGenreId =useGameQueryStore(s=>s.gameQuery.genreId)
+  const  setSelectedGenreId =useGameQueryStore(s=>s.setGenreId);
+  const style =
+    "text-xl font-thin opacity-80 group-hover:opacity-100 hover:border-b-2 cursor-pointer";
+  const selectedStyle = "text-xl font-semibold hover:border-b-2 cursor-pointer";
   return (
     <>
       <div className="flex flex-col space-y-4">
@@ -22,8 +22,8 @@ export default function GenreList({selectedGenre, onSelectGenre }: Props) {
               className="w-12 h-8 rounded-md"
             />
             <a
-              className={item.id===selectedGenre?.id ? selectedStyle : style}
-              onClick={() => onSelectGenre(item)}
+              className={item.id === selectedGenreId ? selectedStyle : style}
+              onClick={() => setSelectedGenreId(item.id)}
             >
               {item.name}
             </a>
