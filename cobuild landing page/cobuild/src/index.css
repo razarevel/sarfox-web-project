@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ficon {
+  filter: grayscale(var(--value, 100%));
+  --value: 100%;
+  tansition: all 0.5s;
+}
+.ficon:hover {
+  filter: grayscale(var(--value, 0%));
+  --value: 0%;
+  tansition: all 0.5s;
+}
+.buildremove {
+  width: 0px;
+  tansition: all 1.2s;
+}
+.builshow {
+  width: 85%;
+  height: 100%;
+  transition: all 1.2s;
+}
+.arremove {
+  width: 0px;
+  tansition: all 1.2s;
+}
+.arshow {
+  width: 60%;
+  height: 100%;
+  transition: all 1.2s;
+}
+.constshow {
+  width: 70%;
+  height: 100%;
+  transition: all 1.2s;
+}
+.constemove {
+  width: 0px;
+  tansition: all 1.2s;
+}
+.plainstshow {
+  width: 40%;
+  height: 100%;
+  transition: all 1.2s;
+}
+.plainremove {
+  width: 0px;
+  tansition: all 1.2s;
+}
+
+
+
